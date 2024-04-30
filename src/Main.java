@@ -1,3 +1,4 @@
+import domain.repository.BibliotecaRepository;
 import domain.repository.FuncionarioRepository;
 import view.MenuInicial;
 
@@ -6,7 +7,10 @@ public class Main {
         FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
         funcionarioRepository.inserirFuncionarios();
 
-        MenuInicial menuInicial = new MenuInicial();
-        menuInicial.criarMenuInicial();
+        BibliotecaRepository bibliotecaRepository = new BibliotecaRepository();
+        bibliotecaRepository.inserirClientes();
+        bibliotecaRepository.inserirLivros();
+
+        new MenuInicial();
     }
 }

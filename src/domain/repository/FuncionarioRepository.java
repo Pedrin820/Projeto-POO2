@@ -6,14 +6,21 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FuncionarioRepository {
-    private ArrayList<Funcionario> listaFuncionarios = new ArrayList<>();
+
+    private static FuncionarioRepository instancia;
+
+    public static ArrayList<Funcionario> listaFuncionarios = new ArrayList<>();
+
     private final String arquivo = "src/utils/funcionarios.txt";
 
-    public ArrayList<Funcionario> getListaFuncionarios() {
-        return listaFuncionarios;
+    public static FuncionarioRepository getInstancia() {
+        if (instancia == null) {
+            instancia = new FuncionarioRepository();
+        }
+        return instancia;
     }
 
-    public void inserirFuncionarios() {
+    public void inserirFuncionarios() { // insere os funcionarios do txt no array
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linhaInserir;
             while ((linhaInserir = br.readLine()) != null) {
@@ -26,7 +33,7 @@ public class FuncionarioRepository {
         }
     }
 
-    public void salvarFuncionarios() {
+    public void salvarFuncionarios() { // inserere os funcionarios do array no txt
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
             for (Funcionario funcionario : listaFuncionarios) {
                 String linhaSalvar = funcionario.getLogin().toUpperCase() + "," + funcionario.getSenha().toUpperCase();

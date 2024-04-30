@@ -1,23 +1,23 @@
 package domain.model;
 
 public class Livro {
-    public String idLivro;
+    public long idLivro;
     public String titulo;
     public String autor;
-    public LivroStatus status;
+    public String status;
 
-    public Livro(String idLivro, String titulo, String autor, LivroStatus status) {
+    public Livro(Long idLivro, String titulo, String autor, String status) {
         this.idLivro = idLivro;
         this.titulo = titulo;
         this.autor = autor;
         this.status = status;
     }
 
-    public String getIdLivro() {
+    public long getIdLivro() {
         return idLivro;
     }
 
-    public void setIdLivro(String idLivro) {
+    public void setIdLivro(long idLivro) {
         this.idLivro = idLivro;
     }
 
@@ -37,16 +37,16 @@ public class Livro {
         this.autor = autor;
     }
 
-    public LivroStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(LivroStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
-        return String.format("Título: %s", getTitulo());
+        return String.format("ID: %s | Título: %s | Autor: %s | Disponibilidade: %s", getIdLivro(), getTitulo(), getAutor(), getStatus());
     }
 }
